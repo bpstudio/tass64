@@ -160,10 +160,12 @@ distclean: clean
 	-rm -f $(TARGET)
 
 install: $(TARGET)
-	install -D $(TARGET) $(BINDIR)/$(TARGET)
+	install -d $(BINDIR)
+	install $(TARGET) $(BINDIR)/$(TARGET)
 
 install-strip: $(TARGET)
-	install -D -s $(TARGET) $(BINDIR)/$(TARGET)
+	install -d $(BINDIR)
+	install -s $(TARGET) $(BINDIR)/$(TARGET)
 
 uninstall:
 	-rm $(BINDIR)/$(TARGET)
