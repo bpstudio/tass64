@@ -1,0 +1,52 @@
+/*
+    $Id: 64tass.h 1229 2016-07-09 19:52:59Z soci $
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
+#ifndef _64TASS_H
+#define _64TASS_H
+#include <stdio.h>
+#include "stdbool.h"
+#include "inttypes.h"
+#include "wait_e.h"
+#ifndef REVISION
+#define REVISION "1229?"
+#endif
+#undef VERSION
+#define VERSION "1.52." REVISION
+#define MAX_PASS 20
+
+struct file_list_s;
+struct Label;
+struct Obj;
+
+extern address_t all_mem, all_mem2;
+extern uint8_t outputeor;
+extern int temporary_label_branch;
+extern line_t vline;
+extern struct linepos_s lpoint; 
+extern struct avltree *star_tree;
+extern bool fixeddig, constcreated;
+extern address_t star;
+extern const uint8_t *pline;
+extern uint16_t reffile, curfile;
+extern uint32_t backr, forwr;
+extern uint8_t pass, max_pass;
+extern void new_waitfor(enum wait_e, linepos_t);
+extern struct Obj *compile(struct file_list_s *);
+extern void var_assign(struct Label *, struct Obj *, bool);
+extern void pokeb(uint8_t);
+#endif
